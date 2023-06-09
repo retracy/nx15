@@ -1,5 +1,6 @@
 import { EchoExecutorSchema } from './schema';
 import * as fs from 'fs';
+import * as path from 'path';
 
 export default async function runExecutor(
   options: EchoExecutorSchema,
@@ -10,7 +11,9 @@ export default async function runExecutor(
     // date: new Date().toDateString(),
     time: new Date().toLocaleTimeString()
   };
-  fs.writeFileSync("test_results/ruffle-data/ruffle-report.json", JSON.stringify(data));
+  const dir = "test_results/ruffle-data";
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, "ruffle-report.json"), JSON.stringify(data));
 
   return {
     success: true
