@@ -13,7 +13,7 @@ export default async function runExecutor(
   };
   const dir = "test_results/ruffle-data";
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, "ruffle-report.json"), JSON.stringify(data));
+  fs.writeFileSync(path.join(dir, "ruffle-report.json"), JSON.stringify(data, null, 2) + "\n");
 
   return {
     success: true
